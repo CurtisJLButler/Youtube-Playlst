@@ -9,7 +9,7 @@ async def fetch_data():
     "part": "snippet,contentDetails",
     "maxResults": "50",
     "playlistId": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4",
-    "key": "AIzaSyAYZn4_c-Dfl9KmZdfEPEsz0SlkpvLt9EU"
+    "key": ""
     }
     url = "https://www.googleapis.com/youtube/v3/playlistItems"
     
@@ -28,7 +28,7 @@ async def fetch_data():
             "maxResults": "50",
             # "playlistId": "PLflBssihv_O_QnsAFSpxOO8RAfaV2KIVc", # Test
             "playlistId": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4", # Final
-            "key": "AIzaSyAYZn4_c-Dfl9KmZdfEPEsz0SlkpvLt9EU",
+            "key": "",
             "pageToken": nextPageToken
         })
         response = json.loads(res.text)
