@@ -22,6 +22,6 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    list = await fetch()
+    list = await fetch(app.key)
     print(list)
     return {"videos": list}

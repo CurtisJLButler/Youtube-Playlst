@@ -16,10 +16,10 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchVideos() {
-      const response = await fetch('http://curtisjlbutler.com/playlist/fetch');
+      const response = await fetch('http://159.2.5.43:3000/playlist/fetch');
       const data = await response.json();
-      setVideos(data.videos);
-      setDisplayVideos(data.videos);
+      setVideos(data);
+      setDisplayVideos(data);
       setLoading(false);
     }
     fetchVideos();
@@ -42,25 +42,6 @@ export default function Home() {
           randomIndex = Math.floor(Math.random() * videos.length);
         }
 
-        // let exists = false
-        // while (!exists) {
-        //   for (let video of randomVideos) {
-        //     if (video.title == videos[randomIndex]) {
-        //       exists = true
-        //       console.log("existed")
-        //       break
-        //     } else if (video.title == videos[randomIndex]) {
-        //       continue
-        //     }
-        //   }
-        //   if (!exists) {
-        //     break
-        //   } else if (exists) {
-        //     randomIndex = Math.floor(Math.random() * videos.length);
-        //   }
-
-        // }
-
         if (randomVideos.length == 0) {
           // console.log(videos[randomIndex])
           setRandomVideos([videos[randomIndex]])
@@ -80,7 +61,6 @@ export default function Home() {
       const all = () => {
         setDisplayVideos(videos)
       }
-
 
       return (
         <>
