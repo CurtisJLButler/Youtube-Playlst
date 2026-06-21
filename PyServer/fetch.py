@@ -2,14 +2,14 @@ import requests
 import json
 import time
 
-async def fetch_data(key):
+async def fetch_data():
     # Example API
     print("Fetching")
     params = {
     "part": "snippet,contentDetails",
     "maxResults": "50",
     "playlistId": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4",
-    "key": key
+    "key": "AIzaSyAYZn4_c-Dfl9KmZdfEPEsz0SlkpvLt9EU"
     }
     url = "https://www.googleapis.com/youtube/v3/playlistItems"
     
@@ -26,8 +26,9 @@ async def fetch_data(key):
         res = requests.get(url, params={
             "part": "snippet,contentDetails",
             "maxResults": "50",
-            "playlistId": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4",
-            "key": key,
+            # "playlistId": "PLflBssihv_O_QnsAFSpxOO8RAfaV2KIVc", # Test
+            "playlistId": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4", # Final
+            "key": "AIzaSyAYZn4_c-Dfl9KmZdfEPEsz0SlkpvLt9EU",
             "pageToken": nextPageToken
         })
         response = json.loads(res.text)

@@ -30,7 +30,6 @@ app.add_middleware(
 def startup_db_client():
     app.mongodb_client = MongoClient(config["ATLAS_URI"])
     app.database = app.mongodb_client[config["DB_NAME"]]
-    app.key = config["KEY"]
 
 @app.on_event("shutdown")
 def shutdown_db_client():
@@ -38,7 +37,7 @@ def shutdown_db_client():
 
 @app.get("/test")
 async def root():
-    list = await fetch(config[app.key])
+    list = await fetch()
     print(list)
     return {"videos": list}
 
