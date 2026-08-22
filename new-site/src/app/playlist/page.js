@@ -28,12 +28,12 @@ export default function Home() {
   const scrollToBottom = () => {
     window.scrollTo({
       top: document.documentElement.scrollHeight, // Get the total height of the document
-      behavior: 'smooth', // Smooth animation
+      // behavior: 'smooth', // Smooth animation
     })}
     const scrollToTop = () => {
       window.scrollTo({
-        top: 0, // Get the total height of the document
-        behavior: 'smooth', // Smooth animation
+        top: 0,
+        // behavior: 'smooth',
       })}
 
       const random = () => {
@@ -41,25 +41,6 @@ export default function Home() {
         while (videos[randomIndex].title == "Deleted video" || videos[randomIndex].title == "Private video") {
           randomIndex = Math.floor(Math.random() * videos.length);
         }
-
-        // let exists = false
-        // while (!exists) {
-        //   for (let video of randomVideos) {
-        //     if (video.title == videos[randomIndex]) {
-        //       exists = true
-        //       console.log("existed")
-        //       break
-        //     } else if (video.title == videos[randomIndex]) {
-        //       continue
-        //     }
-        //   }
-        //   if (!exists) {
-        //     break
-        //   } else if (exists) {
-        //     randomIndex = Math.floor(Math.random() * videos.length);
-        //   }
-
-        // }
 
         if (randomVideos.length == 0) {
           // console.log(videos[randomIndex])
@@ -102,7 +83,7 @@ export default function Home() {
             <div key={index} className='m-5'>
             <a href={`https://www.youtube.com/watch?v=${video.video_id}&list=${video.playlist_id}`}>
             <div className='flex flex-row'>
-            <img src={video.thumbnail} />
+            <img className='w-30' src={video.thumbnail} />
             <h2>{video.title}</h2>
             </div>
             </a>

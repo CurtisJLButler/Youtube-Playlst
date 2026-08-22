@@ -18,6 +18,7 @@ async def fetch_data():
     nextPageToken = ""
     stopat = 1
 
+
     while(stopat):
         if nextPageToken:
             params["pageToken"] = nextPageToken
@@ -34,8 +35,17 @@ async def fetch_data():
         response = json.loads(res.text)
         items = response.get("items", [])
         for item in items:
+            if(item["snippet"]["thumbnails"].get("maxres", {}).get("url") != None):
+                thumbnail = item["snippet"]["thumbnails"].get("maxres", {}).get("url")
+                print(thumbnail)
+            elif(item["snippet"]["thumbnails"].get("medium", {}).get("url") != None):
+                thumbnail = item["snippet"]["thumbnails"].get("medium", {}).get("url")
+            else:
+                thumbnail = item["snippet"]["thumbnails"].get("default", {}).get("url")
+
+                 
             video = {
-                "thumbnail": item["snippet"]["thumbnails"].get("default", {}).get("url"),
+                "thumbnail": thumbnail,
                 "title": item["snippet"]["title"],
                 "description": item["snippet"]["description"],
                 "video_id": item["contentDetails"]["videoId"],
@@ -43,6 +53,8 @@ async def fetch_data():
 
                 
             }
+            if(video["title"] == "Deleted video" or video["title"] == "Private video"):
+                video["thumbnail"] = "http://localhost:8000/noimage"
             if(video["description"] == ""):
                 video["description"] = "No description"
             if not video["thumbnail"]:
@@ -50,7 +62,7 @@ async def fetch_data():
             
             allVideos.append(video)
         nextPageToken = response.get("nextPageToken")
-        # stopat -= 1
+        stopat -= 1
         if(nextPageToken):
            continue
         else:
