@@ -9,7 +9,8 @@ origins = [
     "http://192.168.2.10:3000",  # optionally include this
     "http://curtisjlbutler.com:3000",
     "http://curtisjlbutler.com:8000",
-    "http://localhost:8000"
+    "http://localhost:8000",
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
