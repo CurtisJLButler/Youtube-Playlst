@@ -16,7 +16,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchVideos() {
-      const response = await fetch('http://curtisjlbutler.com/playlist/fetch');
+      const response = await fetch('http://localhost:3000/playlist/fetch');
       const data = await response.json();
       setVideos(data.videos);
       setDisplayVideos(data.videos);

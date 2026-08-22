@@ -9,7 +9,7 @@ async def fetch_data():
     "part": "snippet,contentDetails",
     "maxResults": "50",
     "playlistId": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4",
-    "key": ""
+    "key": "AIzaSyAYZn4_c-Dfl9KmZdfEPEsz0SlkpvLt9EU"
     }
     url = "https://www.googleapis.com/youtube/v3/playlistItems"
     
@@ -18,7 +18,7 @@ async def fetch_data():
     nextPageToken = ""
     stopat = 1
 
-    while(True):
+    while(stopat):
         if nextPageToken:
             params["pageToken"] = nextPageToken
 
@@ -28,7 +28,7 @@ async def fetch_data():
             "maxResults": "50",
             # "playlistId": "PLflBssihv_O_QnsAFSpxOO8RAfaV2KIVc", # Test
             "playlistId": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4", # Final
-            "key": "",
+            "key": "AIzaSyAYZn4_c-Dfl9KmZdfEPEsz0SlkpvLt9EU",
             "pageToken": nextPageToken
         })
         response = json.loads(res.text)
@@ -50,7 +50,7 @@ async def fetch_data():
             
             allVideos.append(video)
         nextPageToken = response.get("nextPageToken")
-        stopat -= 1
+        # stopat -= 1
         if(nextPageToken):
            continue
         else:
