@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Body, Request, Response, HTTPException, status
 from fastapi.encoders import jsonable_encoder
 from typing import List
-from scripts.updatePlaylist import update as newvideo
+from src.scripts.updatePlaylist import update as newvideo
 
-from models import Video, VideoUpdate
-from fetch import fetch_data as grab
+from src.models import Video, VideoUpdate
+from src.scripts.fetch import fetch_data as grab
 
 router = APIRouter()
 
@@ -29,6 +29,7 @@ async def create_book(request: Request, video: Video = Body(...)):
 
 @router.get("/", response_description="List all videos", response_model=List[Video])
 def list_videos(request: Request):
+    print("fetching")
     videos = list(request.app.database["videos"].find())
     return videos
 
