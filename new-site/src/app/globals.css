@@ -34,3 +34,10 @@ Retrieved 2025-12-30, License - CC BY-SA 4.0
 input:focus {
     outline-width: 0;
 }
+
+@font-face {
+  font-family: OpenSans;
+  font-style: normal;
+  font-weight: 200 700;
+  src: url("/Code/Youtube-Playlist styling/new-site/src/app/components/OpenSans.woff2") format("woff2");
+}

@@ -49,14 +49,17 @@ async def fetch_data():
                 "title": item["snippet"]["title"],
                 "description": item["snippet"]["description"],
                 "video_id": item["contentDetails"]["videoId"],
-                "playlist_id": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4"
+                "playlist_id": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4",
+                "descState": "hidden",
+                "showHide": "Show description"
 
                 
             }
             if(video["title"] == "Deleted video" or video["title"] == "Private video"):
                 video["thumbnail"] = "http://localhost:8000/noimage"
+                video["description"] = 0
             if(video["description"] == ""):
-                video["description"] = "No description"
+                video["description"] = 0
             if not video["thumbnail"]:
                 video["thumbnail"] = "img/thumb.jpg"
             
