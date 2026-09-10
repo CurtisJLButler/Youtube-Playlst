@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
-import Youtube from "../components/YouTube_logo_2013.svg"
+
 
 export default function Home() {
 
@@ -13,7 +13,7 @@ export default function Home() {
 	let colors = {
 		"bu_lgray" : "bg-pink-200 text-black p-2 rounded-lg mr-2",
 		"vi_pink" : "bg-pink-200 p-5 rounded-2xl m-5",
-		"border" : "border-pink-300 border-3",
+		"border" : "border-pink-400 border-3",
 		"hover" : "hover:bg-pink-500"
 	}
 
@@ -35,7 +35,7 @@ export default function Home() {
 	const scrollToBottom = () => {
 		window.scrollTo({
 			top: document.documentElement.scrollHeight, // Get the total height of the document
-			// behavior: 'smooth', // Smooth animation
+			// behavior: 'smooth',
 		})}
 		const scrollToTop = () => {
 			window.scrollTo({
@@ -96,26 +96,24 @@ export default function Home() {
 
 				{filteredVideos.map((video, index) => (
 					<div key={index} className={`${colors.vi_pink} ${colors.border}`}>
-						{/* <a href={`https://www.youtube.com/watch?v=${video.video_id}&list=${video.playlist_id}`}> */}
 						<div className='flex flex-row'>
-							<div className='flex-column basis-50'>
+							<a className='flex-column basis-50' href={`https://www.youtube.com/watch?v=${video.video_id}&list=${video.playlist_id}`}>
 								<img className='w-30' src={video.thumbnail} />
-							</div>
+							</a>
 							<div className='flex-column basis-full'>
-								<h2>{video.title}</h2>
-								{video.title == "Deleted video" || video.title == "Private video" ? null : video.description ? <a
+								<a href={`https://www.youtube.com/watch?v=${video.video_id}&list=${video.playlist_id}`}>{video.title}</a>
+								{video.title == "Deleted video" || video.title == "Private video" ? null : video.description ? <p
 								onClick={() => {descShow(index)}}
 								className='hover:underline'
 								>
 									{video.showHide}
-								</a> : <p>No description</p>}
+								</p> : <p>No description</p>}
 								
 								
 
 								<p className={video.descState}>{video.description}</p>
 							</div>
 						</div>
-					{/* </a> */}
 
 					</div>
 				))}

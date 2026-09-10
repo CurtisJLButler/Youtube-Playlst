@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`max-w-full`}>
-        <div className="flex flex-col overflow-x-clip bg-pink-100">
+        <div className="flex flex-col overflow-x-clip bg-pink-100 h-screen">
           <NavBar />
           <main className="flex flex-grow flex-col">{children}</main>
         </div>
