@@ -18,7 +18,10 @@ async def fetch_data():
     nextPageToken = ""
     stopat = 1
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a019ff5aae631b5b96689911927a6b4608bf3e3
     while(stopat):
         if nextPageToken:
             params["pageToken"] = nextPageToken
