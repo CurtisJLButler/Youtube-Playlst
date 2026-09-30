@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from pathlib import Path
+from fastapi.responses import FileResponse
 from fetch import fetch_data as fetch
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -24,5 +26,10 @@ app.add_middleware(
 @app.get("/")
 async def root():
     list = await fetch()
-    print(list)
+    # print(list)
     return {"videos": list}
+
+@app.get("/noimage")
+async def get_image():
+    image_path = Path("images/teto.jpg")
+    return FileResponse(image_path)

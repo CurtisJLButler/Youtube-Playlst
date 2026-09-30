@@ -18,6 +18,10 @@ async def fetch_data():
     nextPageToken = ""
     stopat = 1
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 2a019ff5aae631b5b96689911927a6b4608bf3e3
     while(stopat):
         if nextPageToken:
             params["pageToken"] = nextPageToken
@@ -34,17 +38,31 @@ async def fetch_data():
         response = json.loads(res.text)
         items = response.get("items", [])
         for item in items:
+            if(item["snippet"]["thumbnails"].get("maxres", {}).get("url") != None):
+                thumbnail = item["snippet"]["thumbnails"].get("maxres", {}).get("url")
+                print(thumbnail)
+            elif(item["snippet"]["thumbnails"].get("medium", {}).get("url") != None):
+                thumbnail = item["snippet"]["thumbnails"].get("medium", {}).get("url")
+            else:
+                thumbnail = item["snippet"]["thumbnails"].get("default", {}).get("url")
+
+                 
             video = {
-                "thumbnail": item["snippet"]["thumbnails"].get("default", {}).get("url"),
+                "thumbnail": thumbnail,
                 "title": item["snippet"]["title"],
                 "description": item["snippet"]["description"],
                 "video_id": item["contentDetails"]["videoId"],
-                "playlist_id": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4"
+                "playlist_id": "PLflBssihv_O9-p25fni3Jt8eTMHQf62y4",
+                "descState": "hidden",
+                "showHide": "Show description"
 
                 
             }
+            if(video["title"] == "Deleted video" or video["title"] == "Private video"):
+                video["thumbnail"] = "http://localhost:8000/noimage"
+                video["description"] = 0
             if(video["description"] == ""):
-                video["description"] = "No description"
+                video["description"] = 0
             if not video["thumbnail"]:
                 video["thumbnail"] = "img/thumb.jpg"
             
